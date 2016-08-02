@@ -87,5 +87,36 @@ namespace Meowtrix.Linq
                 return result;
             }
         }
+
+        /// <summary>
+        /// Take the item that has max value of key in a sequence, or default value if the sequence has no item.
+        /// </summary>
+        /// <typeparam name="T">Type of the items in the sequence.</typeparam>
+        /// <typeparam name="TResult">Type of the key.</typeparam>
+        /// <param name="source">The source sequence.</param>
+        /// <param name="selector">The function to select key from items.</param>
+        /// <returns>The item that has max value of key. Default value of <typeparamref name="T"/> if the sequence has no item.</returns>
+        /// <exception cref="ArgumentNullException"/>
+        public static T TakeMaxOrDefault<T, TResult>(this IEnumerable<T> source, Func<T, TResult> selector)
+            where TResult : IComparable<TResult>
+        {
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            using (var e = source.GetEnumerator())
+            {
+                if (!e.MoveNext()) return default(T);
+                T max = e.Current;
+                TResult key = selector(max);
+                while (e.MoveNext())
+                {
+                    TResult key2 = selector(e.Current);
+                    if (key2.CompareTo(key) > 0)
+                    {
+                        key = key2;
+                        max = e.Current;
+                    }
+                }
+                return max;
+            }
+        }
     }
 }
