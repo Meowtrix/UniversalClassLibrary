@@ -15,7 +15,7 @@
     }
   },
   "title": "Meowtrix.UniversalClassLibrary",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "packOptions": {
     "projectUrl": "https://github.com/Meowtrix/UniversalClassLibrary",
     "releaseNotes": "v1.1.1\n  - Set supported platform down to netstandard1.0.\nv1.1.0\n  - Add ITask.\nv1.0.0\n  - Initial release, including linq.",

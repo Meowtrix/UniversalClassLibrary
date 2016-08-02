@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
-namespace Meowtrix.ITask
+namespace Meowtrix.Threading.ITask
 {
     /// <summary>
     /// A wrapper for the <see cref="IAwaiter"/> interface.

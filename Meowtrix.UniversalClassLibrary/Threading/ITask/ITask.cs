@@ -1,4 +1,4 @@
-﻿namespace Meowtrix.ITask
+﻿namespace Meowtrix.Threading.ITask
 {
     /// <summary>
     /// An interface representing a Task which does not return a value.

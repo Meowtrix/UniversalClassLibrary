@@ -1,4 +1,4 @@
-﻿namespace Meowtrix.ITask
+﻿namespace Meowtrix.Threading.ITask
 {
     /// <summary>Provides an awaitable object that allows for configured awaits on <see cref="ITask"/>.</summary>
     /// <remarks>This type is intended for compiler use only.</remarks>

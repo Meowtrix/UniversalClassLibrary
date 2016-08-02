@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Meowtrix.ITask
+namespace Meowtrix.Threading.ITask
 {
     /// <summary>
     /// Class providing task extension methods.

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace Meowtrix.ITask
+namespace Meowtrix.Threading.ITask
 {
     /// <summary>Awaiter interface for awaiting an <see cref="ITask"/>.</summary>
     /// <remarks>This type is intended for compiler use only.</remarks>

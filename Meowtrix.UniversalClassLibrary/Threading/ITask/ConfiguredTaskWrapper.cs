@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace Meowtrix.ITask
+namespace Meowtrix.Threading.ITask
 {
     internal class ConfiguredTaskWrapper : IConfiguredTask
     {
