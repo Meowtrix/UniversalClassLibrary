@@ -15,5 +15,12 @@
     }
   },
   "title": "Meowtrix.UniversalClassLibrary",
-  "version": "1.0.0-beta2"
+  "version": "1.0.0-beta2",
+  "packOptions": {
+    "projectUrl": "https://github.com/Meowtrix/UniversalClassLibrary",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Meowtrix/UniversalClassLibrary"
+    }
+  }
 }
