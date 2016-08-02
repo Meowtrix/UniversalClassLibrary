@@ -13,7 +13,7 @@ Because .NETFramework provides BCL with the framework, while other platforms onl
 
 ## Download
 
-ITask is available as a [NuGet package](http://www.nuget.org/packages/Meowtrix.UniversalClassLibrary/) through nuget.org with the package ID [`Meowtrix.UniversalClassLibrary`](http://www.nuget.org/packages/Meowtrix.UniversalClassLibrary/).
+UniversalClassLibrary is available as a [NuGet package](http://www.nuget.org/packages/Meowtrix.UniversalClassLibrary/) through nuget.org with the package ID [`Meowtrix.UniversalClassLibrary`](http://www.nuget.org/packages/Meowtrix.UniversalClassLibrary/).
 
 ## Components
 
@@ -23,4 +23,8 @@ An interface wrapper for Task Parallel Library, provides covariance. See [Thread
 
 ### Linq
 
-Additional methods for System.Linq.
+Additional methods for `System.Linq`.
+
+### ComponentModel.NotificationObject
+
+A base class that implements `System.ComponentModel.INotifyPropertyChanged`.
