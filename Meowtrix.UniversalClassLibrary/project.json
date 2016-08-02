@@ -8,17 +8,17 @@
   "description": "Class library for all .NET platforms.",
   "frameworks": {
     "net46": {},
-    "netstandard1.6": {
+    "netstandard1.0": {
       "dependencies": {
         "NETStandard.Library": "1.6.0"
       }
     }
   },
   "title": "Meowtrix.UniversalClassLibrary",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "packOptions": {
     "projectUrl": "https://github.com/Meowtrix/UniversalClassLibrary",
-    "releaseNotes": "v1.1.0\n  - Add ITask.\nv1.0.0\n  - Initial release, including linq.",
+    "releaseNotes": "v1.1.1\n  - Set supported platform down to netstandard1.0.\nv1.1.0\n  - Add ITask.\nv1.0.0\n  - Initial release, including linq.",
     "repository": {
       "type": "git",
       "url": "https://github.com/Meowtrix/UniversalClassLibrary"
