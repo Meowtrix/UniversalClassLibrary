@@ -15,7 +15,7 @@ namespace Meowtrix.Linq
         /// <typeparam name="T">Type of the items.</typeparam>
         /// <param name="collection">The collection that will be added to.</param>
         /// <param name="items">The items to add.</param>
-        /// <exception cref="ArgumentNullException"/>
+        /// <exception cref="ArgumentNullException"><paramref name="collection"/> is null.</exception>
         public static void AddRange<T>(this ICollection<T> collection, IEnumerable<T> items)
         {
             if (collection == null) throw new ArgumentNullException(nameof(collection));
@@ -31,7 +31,7 @@ namespace Meowtrix.Linq
         /// <param name="list">The list that will be inserted into.</param>
         /// <param name="index">The position to insert.</param>
         /// <param name="items">The items to insert.</param>
-        /// <exception cref="ArgumentNullException"/>
+        /// <exception cref="ArgumentNullException"><paramref name="list"/> is null;</exception>
         public static void InsertRange<T>(this IList<T> list, int index, IEnumerable<T> items)
         {
             if (list == null) throw new ArgumentNullException(nameof(list));
@@ -46,7 +46,7 @@ namespace Meowtrix.Linq
         /// <typeparam name="T">Type of the item.</typeparam>
         /// <param name="source">The sequence to check.</param>
         /// <returns>The item if the source has only 1 item, otherwise default value of <typeparamref name="T"/>. </returns>
-        /// <exception cref="ArgumentNullException" />
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
         public static T TakeIfSingle<T>(this IEnumerable<T> source)
         {
             if (source == null) throw new ArgumentNullException(nameof(source));
@@ -96,7 +96,7 @@ namespace Meowtrix.Linq
         /// <param name="source">The source sequence.</param>
         /// <param name="selector">The function to select key from items.</param>
         /// <returns>The item that has max value of key. Default value of <typeparamref name="T"/> if the sequence has no item.</returns>
-        /// <exception cref="ArgumentNullException"/>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
         public static T TakeMaxOrDefault<T, TResult>(this IEnumerable<T> source, Func<T, TResult> selector)
             where TResult : IComparable<TResult>
         {
