@@ -1,10 +1,19 @@
-﻿{
-  "supports": {},
-  "dependencies": {
-    "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-    "NETStandard.Library": "1.6.0"
+{
+  "authors": [ "Meowtrix" ],
+  "buildOptions": {
+    "xmlDoc": true,
+    "optimize": true
   },
+  "copyright": "Copyright Meowtrix 2016",
+  "description": "Class library for all .NET platforms.",
   "frameworks": {
-    "netstandard1.0": {}
-  }
+    "net46": {},
+    "netstandard1.6": {
+      "dependencies": {
+        "NETStandard.Library": "1.6.0"
+      }
+    }
+  },
+  "title": "Meowtrix.UniversalClassLibrary",
+  "version": "1.0.0-beta2"
 }
