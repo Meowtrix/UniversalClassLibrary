@@ -99,6 +99,15 @@ namespace Meowtrix.Collections.Generic
         bool ICollection<TValue>.IsReadOnly => false;
 
         /// <summary>
+        /// Gets or sets the capacity of the <see cref="IDTable{TId, TValue}"/>.
+        /// </summary>
+        public int Capacity
+        {
+            get { return innerList.Capacity; }
+            set { innerList.Capacity = value; }
+        }
+
+        /// <summary>
         /// Occurs when the collection changes.
         /// </summary>
         public event NotifyCollectionChangedEventHandler CollectionChanged;
