@@ -7,7 +7,6 @@ namespace Meowtrix
     /// </summary>
     /// <typeparam name="T">Type of id.</typeparam>
     public interface IIdentifiable<out T>
-        where T : IEquatable<T>
     {
         /// <summary>
         /// The id to identify the object.

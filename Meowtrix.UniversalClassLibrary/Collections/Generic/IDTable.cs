@@ -13,7 +13,6 @@ namespace Meowtrix.Collections.Generic
     /// <typeparam name="TId">Type of id getting from <see cref="IIdentifiable{T}"/>.</typeparam>
     /// <typeparam name="TValue">Type of items.</typeparam>
     public class IDTable<TId, TValue> : ICollection<TValue>, IReadOnlyCollection<TValue>, INotifyCollectionChanged
-        where TId : IEquatable<TId>
         where TValue : IIdentifiable<TId>
     {
         private readonly Dictionary<TId, TValue> innerDictionary = new Dictionary<TId, TValue>();
@@ -130,7 +129,7 @@ namespace Meowtrix.Collections.Generic
             }
             set
             {
-                if (!value.Id.Equals(index)) throw new ArgumentException();
+                if (!EqualityComparer<TId>.Default.Equals(index, value.Id)) throw new ArgumentException();
                 var olditem = innerDictionary[index];
                 if (innerDictionary.ContainsKey(index))
                 {
