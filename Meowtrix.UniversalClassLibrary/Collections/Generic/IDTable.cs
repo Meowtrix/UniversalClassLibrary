@@ -14,7 +14,7 @@ namespace Meowtrix.Collections.Generic
     public class IDTable<TId, TValue> : ICollection<TValue>, IReadOnlyCollection<TValue>, INotifyCollectionChanged
         where TValue : IIdentifiable<TId>
     {
-        private readonly SortedList<TId, TValue> innerList = new SortedList<TId, TValue>();
+        private readonly SortedList<TId, TValue> _innerList = new SortedList<TId, TValue>();
 
         /// <summary>
         /// Create an empty <see cref="IDTable{TId, TValue}"/>.
@@ -25,13 +25,13 @@ namespace Meowtrix.Collections.Generic
         /// Create an empty <see cref="IDTable{TId, TValue}"/> with specified initial capacity.
         /// </summary>
         /// <param name="capacity">Initial capacity of the <see cref="IDTable{TId, TValue}"/>.</param>
-        public IDTable(int capacity) { innerList = new SortedList<TId, TValue>(capacity); }
+        public IDTable(int capacity) { _innerList = new SortedList<TId, TValue>(capacity); }
 
         /// <summary>
         /// Create an <see cref="IDTable{TId, TValue}"/> from a collection.
         /// </summary>
         /// <param name="collection">The original collection.</param>
-        public IDTable(IEnumerable<TValue> collection) { innerList = new SortedList<TId, TValue>(collection.ToDictionary(x => x.Id)); }
+        public IDTable(IEnumerable<TValue> collection) { _innerList = new SortedList<TId, TValue>(collection.ToDictionary(x => x.Id)); }
 
         /// <summary>
         /// Adds an item to the <see cref="IDTable{TId, TValue}"/>.
@@ -39,7 +39,7 @@ namespace Meowtrix.Collections.Generic
         /// <param name="item">The item to add.</param>
         public void Add(TValue item)
         {
-            innerList.Add(item.Id, item);
+            _innerList.Add(item.Id, item);
             OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, item));
         }
 
@@ -50,7 +50,7 @@ namespace Meowtrix.Collections.Generic
         /// <returns>If <paramref name="item"/> is found.</returns>
         public bool Remove(TValue item)
         {
-            bool found = innerList.Remove(item.Id);
+            bool found = _innerList.Remove(item.Id);
             if (found) OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, item));
             return found;
         }
@@ -60,13 +60,13 @@ namespace Meowtrix.Collections.Generic
         /// </summary>
         /// <param name="id">Id of the item to remove.</param>
         /// <returns>If an item with <paramref name="id"/> is found.</returns>
-        public bool Remove(TId id) => Remove(innerList[id]);
+        public bool Remove(TId id) => Remove(_innerList[id]);
 
         /// <summary>
         /// Enumerates items in the <see cref="IDTable{TId, TValue}"/>.
         /// </summary>
         /// <returns>The enumerator.</returns>
-        public IEnumerator<TValue> GetEnumerator() => innerList.Values.GetEnumerator();
+        public IEnumerator<TValue> GetEnumerator() => _innerList.Values.GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         IEnumerator<TValue> IEnumerable<TValue>.GetEnumerator() => GetEnumerator();
 
@@ -75,7 +75,7 @@ namespace Meowtrix.Collections.Generic
         /// </summary>
         public void Clear()
         {
-            innerList.Clear();
+            _innerList.Clear();
             OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
         /// <summary>
@@ -83,19 +83,19 @@ namespace Meowtrix.Collections.Generic
         /// </summary>
         /// <param name="item">The item to locate.</param>
         /// <returns>If <paramref name="item"/> is found.</returns>
-        public bool Contains(TValue item) => innerList.ContainsKey(item.Id);
+        public bool Contains(TValue item) => _innerList.ContainsKey(item.Id);
 
         /// <summary>
         /// Copies the elements of the <see cref="IDTable{TId, TValue}"/> to an <see cref="Array"/>, starting at a particular <see cref="Array"/> index.
         /// </summary>
         /// <param name="array">The <see cref="Array"/> to copy to. Must be one-dimension, zero-based.</param>
         /// <param name="index">The zero-based index in <paramref name="array"/> at which copying begins.</param>
-        public void CopyTo(TValue[] array, int index) => innerList.Values.CopyTo(array, index);
+        public void CopyTo(TValue[] array, int index) => _innerList.Values.CopyTo(array, index);
 
         /// <summary>
         /// Gets the number of elements contained in the <see cref="IDTable{TId, TValue}"/>.
         /// </summary>
-        public int Count => innerList.Count;
+        public int Count => _innerList.Count;
         bool ICollection<TValue>.IsReadOnly => false;
 
         /// <summary>
@@ -103,8 +103,8 @@ namespace Meowtrix.Collections.Generic
         /// </summary>
         public int Capacity
         {
-            get { return innerList.Capacity; }
-            set { innerList.Capacity = value; }
+            get { return _innerList.Capacity; }
+            set { _innerList.Capacity = value; }
         }
 
         /// <summary>
@@ -132,17 +132,17 @@ namespace Meowtrix.Collections.Generic
             get
             {
                 TValue item;
-                innerList.TryGetValue(index, out item);
+                _innerList.TryGetValue(index, out item);
                 return item;
             }
             set
             {
-                if (!EqualityComparer<TId>.Default.Equals(index, value.Id)) throw new ArgumentException();
-                var olditem = innerList[index];
-                if (innerList.ContainsKey(index))
+                if (!EqualityComparer<TId>.Default.Equals(index, value.Id)) throw new ArgumentException("Index mismatched with value.");
+                var olditem = _innerList[index];
+                if (_innerList.ContainsKey(index))
                 {
-                    innerList[index] = value;
-                    int rawindex = innerList.Values.IndexOf(value);
+                    _innerList[index] = value;
+                    int rawindex = _innerList.Values.IndexOf(value);
                     OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, value, olditem, rawindex));
                 }
                 else Add(value);
