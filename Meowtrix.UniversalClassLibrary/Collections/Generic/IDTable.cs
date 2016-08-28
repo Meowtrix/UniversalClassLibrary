@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using Meowtrix.Linq;
 
 namespace Meowtrix.Collections.Generic
 {
@@ -134,7 +135,7 @@ namespace Meowtrix.Collections.Generic
                 if (innerDictionary.ContainsKey(index))
                 {
                     innerDictionary[index] = value;
-                    int rawindex = innerDictionary.Values.ToList().IndexOf(value);
+                    int rawindex = innerDictionary.Values.IndexOf(value);
                     OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, value, olditem, rawindex));
                 }
                 else Add(value);

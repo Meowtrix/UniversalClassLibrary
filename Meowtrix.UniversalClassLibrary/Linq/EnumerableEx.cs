@@ -41,6 +41,27 @@ namespace Meowtrix.Linq
         }
 
         /// <summary>
+        /// Get the index of an item of <see cref="IEnumerable{T}"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the item.</typeparam>
+        /// <param name="source">The source sequence.</param>
+        /// <param name="item">The item to find.</param>
+        /// <returns>Index of the item. -1 if not found.</returns>
+        public static int IndexOf<T>(this IEnumerable<T> source, T item)
+        {
+            if (source == null) throw new ArgumentException(nameof(source));
+            if (source is IList<T>) return (source as IList<T>).IndexOf(item);
+            int i = 0;
+            var comparer = EqualityComparer<T>.Default;
+            foreach (var e in source)
+            {
+                if (comparer.Equals(e, item)) return i;
+                i++;
+            }
+            return -1;
+        }
+
+        /// <summary>
         /// Take the item if an <see cref="IEnumerable{T}"/> has only 1 item.
         /// </summary>
         /// <typeparam name="T">Type of the item.</typeparam>
