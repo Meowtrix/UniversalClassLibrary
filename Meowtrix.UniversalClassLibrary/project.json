@@ -17,12 +17,12 @@
   },
   "packOptions": {
     "projectUrl": "https://github.com/Meowtrix/UniversalClassLibrary",
-    "releaseNotes": "v1.3\n  - Add IDTable.\n  - Add UnicodeEscape.\n  - Target to .Net Standard 1.3.\nv1.2.2\n  - Add CultureInfoEx.\nv1.2.1\n  - Add strong name: PublicKeyToken=5dcaec6183d7c002\nv1.2\n  - Add NotificationObject, DateTimeEx.\n  - Update EnumerableEx.\nv1.1.1\n  - Set supported platform down to netstandard1.0.\nv1.1.0\n  - Add ITask.\nv1.0.0\n  - Initial release, including linq.",
+    "releaseNotes": "v1.3.1\n  - AddMany and RemoveMany for IDTable.\nv1.3\n  - Add IDTable.\n  - Add UnicodeEscape.\n  - Target to .Net Standard 1.3.\nv1.2.2\n  - Add CultureInfoEx.\nv1.2.1\n  - Add strong name: PublicKeyToken=5dcaec6183d7c002\nv1.2\n  - Add NotificationObject, DateTimeEx.\n  - Update EnumerableEx.\nv1.1.1\n  - Set supported platform down to netstandard1.0.\nv1.1.0\n  - Add ITask.\nv1.0.0\n  - Initial release, including linq.",
     "repository": {
       "type": "git",
       "url": "https://github.com/Meowtrix/UniversalClassLibrary"
     }
   },
   "title": "Meowtrix.UniversalClassLibrary",
-  "version": "1.3.0"
+  "version": "1.3.1"
 }
