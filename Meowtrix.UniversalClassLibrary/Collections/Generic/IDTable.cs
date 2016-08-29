@@ -44,6 +44,19 @@ namespace Meowtrix.Collections.Generic
         }
 
         /// <summary>
+        /// Adds multiple items to the <see cref="IDTable{TId, TValue}"/>.
+        /// </summary>
+        /// <param name="items">The items to add.</param>
+        public void AddMany(IEnumerable<TValue> items)
+        {
+            IList<TValue> itemlist = items as IList<TValue> ?? items.ToList();
+            IList ilist = items as IList ?? itemlist as IList ?? items.ToList();
+            foreach (var item in itemlist)
+                _innerList.Add(item.Id, item);
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, ilist));
+        }
+
+        /// <summary>
         /// Removes an item from the <see cref="IDTable{TId, TValue}"/>.
         /// </summary>
         /// <param name="item">The item to remove.</param>
@@ -61,6 +74,19 @@ namespace Meowtrix.Collections.Generic
         /// <param name="id">Id of the item to remove.</param>
         /// <returns>If an item with <paramref name="id"/> is found.</returns>
         public bool Remove(TId id) => Remove(_innerList[id]);
+
+        /// <summary>
+        /// Remove multiple items from the <see cref="IDTable{TId, TValue}"/>.
+        /// </summary>
+        /// <param name="ids">Ids of the items to remove.</param>
+        public void RemoveMany(IEnumerable<TId> ids)
+        {
+            IList<TId> idlist = ids as IList<TId> ?? ids.ToList();
+            IList ilist = ids as IList ?? idlist as IList ?? ids.ToList();
+            foreach (var id in idlist)
+                _innerList.Remove(id);
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, ilist));
+        }
 
         /// <summary>
         /// Enumerates items in the <see cref="IDTable{TId, TValue}"/>.
