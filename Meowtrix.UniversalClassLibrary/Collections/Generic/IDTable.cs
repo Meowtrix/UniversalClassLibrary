@@ -63,8 +63,9 @@ namespace Meowtrix.Collections.Generic
         /// <returns>If <paramref name="item"/> is found.</returns>
         public bool Remove(TValue item)
         {
+            int rawindex = _innerList.IndexOfValue(item);
             bool found = _innerList.Remove(item.Id);
-            if (found) OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, item));
+            if (found) OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, item, rawindex));
             return found;
         }
 
@@ -78,14 +79,21 @@ namespace Meowtrix.Collections.Generic
         /// <summary>
         /// Remove multiple items from the <see cref="IDTable{TId, TValue}"/>.
         /// </summary>
-        /// <param name="ids">Ids of the items to remove.</param>
+        /// <param name="items">Items to remove.</param>
+        public void RemoveMany(IEnumerable<TValue> items)
+        {
+            foreach (var item in items)
+                Remove(item);
+        }
+
+        /// <summary>
+        /// Remove multiple items from the <see cref="IDTable{TId, TValue}"/> by id.
+        /// </summary>
+        /// <param name="ids">Ids of items to remove.</param>
         public void RemoveMany(IEnumerable<TId> ids)
         {
-            IList<TId> idlist = ids as IList<TId> ?? ids.ToList();
-            IList ilist = ids as IList ?? idlist as IList ?? ids.ToList();
-            foreach (var id in idlist)
-                _innerList.Remove(id);
-            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, ilist));
+            foreach (var item in ids)
+                Remove(item);
         }
 
         /// <summary>
