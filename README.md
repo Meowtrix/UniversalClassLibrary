@@ -28,3 +28,12 @@ Additional methods for `System.Linq`.
 ### ComponentModel.NotificationObject
 
 A base class that implements `System.ComponentModel.INotifyPropertyChanged`.
+
+### Text.UnicodeEscape
+
+Utilities for unicode encoded (\uXXXX) strings.
+
+### Collections
+
+Additional generic Collections.
+
