@@ -49,8 +49,9 @@ namespace Meowtrix.Collections.Generic
         /// <param name="items">The items to add.</param>
         public void AddMany(IEnumerable<TValue> items)
         {
-            IList<TValue> itemlist = items as IList<TValue> ?? items.ToList();
+            ICollection<TValue> itemlist = items as ICollection<TValue> ?? items.ToList();
             IList ilist = items as IList ?? itemlist as IList ?? items.ToList();
+            if (itemlist.Count == 0) return;
             foreach (var item in itemlist)
                 _innerList.Add(item.Id, item);
             OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, ilist));
