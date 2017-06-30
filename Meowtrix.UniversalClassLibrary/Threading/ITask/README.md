@@ -31,7 +31,7 @@ ITask<TResult> GetSomeValueIAsync();
 
 ### Awaiting an ITask
 
-An awaitable class should contains a ```GetAwaiter()``` method or extension method, which returns a type that has the same methods with ```System.Runtime.CompilerServices.TaskAwaiter```. There is an extension method that returns a wrapper for ```IAwater```, so the interface ```ITask``` is awaitable.
+An awaitable class should contains a ```GetAwaiter()``` method or extension method, which returns a type that has the same methods with ```System.Runtime.CompilerServices.TaskAwaiter```. There is an extension method that returns a wrapper for ```IAwaiter```, so the interface ```ITask``` is awaitable.
 You can await it just like a ```Task```:
 
 ```C#
